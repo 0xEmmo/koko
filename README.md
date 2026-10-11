@@ -4,7 +4,7 @@
 
 It is a front-end project: everything runs in the browser against a mock API that lives in this repo, so it can be cloned and run with no keys and no backend.
 
-**Live:** https://koko-0xemmo.vercel.app
+**Live:** https://koko-omega-amber.vercel.app
 
 | Discover (desktop) | Profile (mobile) | Studio (desktop) |
 | --- | --- | --- |
@@ -94,7 +94,7 @@ npm run dev          # http://localhost:5173
 
 ## Photos
 
-All photographs are real and used under the [Unsplash License](https://unsplash.com/license). The 103 images come from 61 photographers, and each one is credited in the lightbox and on the in-app [Credits page](https://koko-0xemmo.vercel.app/credits). Creatives, names, prices and reviews are fictional; the people in the photos are not the creatives described and have no connection to this project.
+All photographs are real and used under the [Unsplash License](https://unsplash.com/license). The 103 images come from 61 photographers, and each one is credited in the lightbox and on the in-app [Credits page](https://koko-omega-amber.vercel.app/credits). Creatives, names, prices and reviews are fictional; the people in the photos are not the creatives described and have no connection to this project.
 
 ## Licence
 
