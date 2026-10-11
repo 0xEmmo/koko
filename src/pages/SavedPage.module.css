@@ -1,0 +1,29 @@
+.page {
+  padding-block: 1.5rem 2rem;
+}
+
+@media (min-width: 900px) {
+  .page {
+    padding-block: 2.5rem 2rem;
+  }
+}
+
+.head {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: var(--step-4);
+}
+
+.sub {
+  color: var(--ink-2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr));
+  gap: 1.25rem;
+}
