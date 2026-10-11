@@ -29,7 +29,7 @@ export function layoutMasonry(ratios: readonly number[], containerWidth: number,
 }
 
 export function columnsFor(width: number) {
-  if (width >= 980) return 3
+  if (width >= 720) return 3
   if (width >= 360) return 2
   return 1
 }

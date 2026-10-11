@@ -177,7 +177,7 @@ function Flow({ creative }: { creative: Creative }) {
             <p className={styles.hold} data-urgent={secondsLeft < 120} role="timer" aria-live="off">
               <Icon name="clock" size={16} />
               We’re holding {draft.start !== null && formatClock(draft.start)} for you for{' '}
-              <strong className="num">{formatCountdown(secondsLeft)}</strong>
+              <strong className="tnum">{formatCountdown(secondsLeft)}</strong>
             </p>
           )}
 

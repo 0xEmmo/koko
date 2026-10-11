@@ -83,6 +83,10 @@ button {
 }
 
 .num {
+  font-variant-numeric: lining-nums;
+}
+
+.tnum {
   font-variant-numeric: tabular-nums;
 }
 
