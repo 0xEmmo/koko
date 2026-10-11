@@ -1,0 +1,9 @@
+node_modules
+dist
+dev-dist
+coverage
+playwright-report
+test-results
+photos/originals
+*.local
+.DS_Store
