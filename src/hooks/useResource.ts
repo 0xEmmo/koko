@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { subscribe } from '../api/db'
 
 export type Resource<T> =
@@ -9,47 +9,66 @@ export type Resource<T> =
 interface Options {
   /** Refetch quietly when the shared database changes (another tab booked, etc). */
   live?: boolean
-  enabled?: boolean
+}
+
+interface Settled<T> {
+  key: string
+  data?: T
+  error?: Error
+  pending: boolean
 }
 
 /**
- * Minimal fetch-state hook. Keeps the last good data while refetching so
- * live updates don't flash a skeleton, and ignores responses that arrive
- * after a newer request has started.
+ * Minimal fetch-state hook. Loading is derived from whether the last
+ * settled request matches the current deps, so changing filters keeps the
+ * previous data on screen (dimmed) instead of flashing a skeleton. Responses
+ * that arrive after a newer request has started are ignored.
  */
 export function useResource<T>(fetcher: () => Promise<T>, deps: unknown[], opts: Options = {}) {
-  const { live = false, enabled = true } = opts
-  const [state, setState] = useState<Resource<T>>({ status: 'loading' })
+  const key = JSON.stringify(deps)
+  const [state, setState] = useState<Settled<T>>({ key: '', pending: true })
   const requestId = useRef(0)
   const fetcherRef = useRef(fetcher)
-  fetcherRef.current = fetcher
 
-  const run = useCallback((quiet: boolean) => {
+  useLayoutEffect(() => {
+    fetcherRef.current = fetcher
+  })
+
+  const run = useCallback((forKey: string) => {
     const id = ++requestId.current
-    if (!quiet) setState((s) => ({ status: 'loading', data: s.data }))
     fetcherRef.current().then(
-      (data) => id === requestId.current && setState({ status: 'ready', data }),
-      (error: Error) => {
-        if (id !== requestId.current) return
-        setState((s) => (quiet && s.status === 'ready' ? s : { status: 'error', error, data: s.data }))
-      },
+      (data) => id === requestId.current && setState({ key: forKey, data, pending: false }),
+      (error: Error) => id === requestId.current && setState((s) => ({ key: forKey, data: s.data, error, pending: false })),
     )
   }, [])
 
-  useEffect(() => {
-    if (!enabled) return
-    run(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [enabled, run, ...deps])
+  useEffect(() => run(key), [key, run])
 
   useEffect(() => {
-    if (!live || !enabled) return
+    if (!opts.live) return
     return subscribe((e) => {
-      if (e.type === 'changed') run(true)
+      if (e.type !== 'changed') return
+      const id = ++requestId.current
+      fetcherRef.current().then(
+        (data) => id === requestId.current && setState({ key, data, pending: false }),
+        () => {
+          // a failed background refresh keeps showing what we had
+        },
+      )
     })
-  }, [live, enabled, run])
+  }, [opts.live, key])
 
-  const retry = useCallback(() => run(false), [run])
-  const refresh = useCallback(() => run(true), [run])
-  return { ...state, retry, refresh }
+  const retry = useCallback(() => {
+    setState((s) => ({ ...s, error: undefined, pending: true }))
+    run(key)
+  }, [key, run])
+
+  let resource: Resource<T>
+  if (state.key !== key || state.pending) resource = { status: 'loading', data: state.data }
+  else if (state.error) resource = { status: 'error', error: state.error, data: state.data }
+  else resource = { status: 'ready', data: state.data as T }
+
+  const refresh = useCallback(() => run(key), [key, run])
+
+  return { ...resource, retry, refresh }
 }

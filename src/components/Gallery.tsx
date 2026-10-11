@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import type { GalleryItem } from '../data/types'
 import { columnsFor, layoutMasonry } from '../lib/masonry'
-import { Photo, photoMeta } from './Photo'
+import { photoMeta } from '../lib/photos'
+import { Photo } from './Photo'
 import styles from './Gallery.module.css'
 
 interface Props {

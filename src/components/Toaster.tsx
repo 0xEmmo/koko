@@ -1,19 +1,7 @@
-import { createContext, useCallback, useContext, useMemo, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useMemo, useRef, useState, type ReactNode } from 'react'
 import { Icon } from './Icon'
+import { ToastContext, type Push, type Toast } from './toast'
 import styles from './Toaster.module.css'
-
-interface Toast {
-  id: number
-  message: string
-  tone: 'neutral' | 'ok' | 'danger'
-  action?: { label: string; onClick: () => void }
-}
-
-type Push = (message: string, opts?: Omit<Partial<Toast>, 'id' | 'message'>) => void
-
-const ToastContext = createContext<Push>(() => {})
-
-export const useToast = () => useContext(ToastContext)
 
 export function Toaster({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([])

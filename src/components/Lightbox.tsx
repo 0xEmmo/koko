@@ -2,7 +2,8 @@ import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } f
 import { creditLine } from '../data/credits'
 import type { GalleryItem } from '../data/types'
 import { Icon } from './Icon'
-import { Photo, photoUrl, photoMeta } from './Photo'
+import { photoMeta, photoUrl } from '../lib/photos'
+import { Photo } from './Photo'
 import styles from './Lightbox.module.css'
 
 interface Props {

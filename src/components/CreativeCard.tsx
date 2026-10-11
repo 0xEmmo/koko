@@ -6,7 +6,7 @@ import { formatNaira } from '../lib/money'
 import { formatClock, lagosNow, relativeDay } from '../lib/time'
 import { Icon } from './Icon'
 import { Photo } from './Photo'
-import { useToast } from './Toaster'
+import { useToast } from './toast'
 import styles from './CreativeCard.module.css'
 
 interface Props {

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { resetDb } from '../api/db'
 import { getNetworkMode, setNetworkMode, type NetworkMode } from '../api/network'
 import { Dialog } from './Dialog'
-import { useToast } from './Toaster'
+import { useToast } from './toast'
 import styles from './DemoControls.module.css'
 
 const modes: { id: NetworkMode; label: string; detail: string }[] = [

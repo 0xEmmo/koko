@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
 
-/** Seconds left until `deadline` (ms epoch), ticking once a second. */
+/** Seconds left until `deadline` (ms epoch). */
 export function useCountdown(deadline: number | null) {
   const [now, setNow] = useState(() => Date.now())
   useEffect(() => {
     if (!deadline) return
-    setNow(Date.now())
-    const id = setInterval(() => setNow(Date.now()), 1000)
+    const id = setInterval(() => setNow(Date.now()), 250)
     return () => clearInterval(id)
   }, [deadline])
   if (!deadline) return null

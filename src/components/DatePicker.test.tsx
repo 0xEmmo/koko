@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
-import { DatePicker, monthGrid } from './DatePicker'
+import { monthGrid } from '../lib/calendar'
+import { DatePicker } from './DatePicker'
 
 describe('monthGrid', () => {
   it('starts weeks on Monday and pads the edges', () => {

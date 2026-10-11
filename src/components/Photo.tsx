@@ -1,18 +1,6 @@
 import { useState, type CSSProperties } from 'react'
-import meta from '../data/photo-meta.json'
+import { photoMeta, photoUrl } from '../lib/photos'
 import styles from './Photo.module.css'
-
-export type PhotoMeta = { ratio: number; widths: number[]; tint: string; blur: string }
-const photos = meta as Record<string, PhotoMeta>
-
-export function photoMeta(name: string): PhotoMeta {
-  const m = photos[name]
-  if (!m) throw new Error(`Unknown photo: ${name}`)
-  return m
-}
-
-export const photoUrl = (name: string, width: number, format: 'avif' | 'webp' = 'webp') =>
-  `/photos/${name}-${width}.${format}`
 
 const srcSet = (name: string, widths: number[], format: 'avif' | 'webp') =>
   widths.map((w) => `${photoUrl(name, w, format)} ${w}w`).join(', ')

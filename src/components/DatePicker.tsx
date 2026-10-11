@@ -2,7 +2,6 @@ import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
 import {
   addDays,
   addMonths,
-  daysInMonth,
   formatDateLong,
   formatMonth,
   parseDateKey,
@@ -10,6 +9,7 @@ import {
   weekday,
   type DateKey,
 } from '../lib/time'
+import { monthGrid } from '../lib/calendar'
 import { Icon } from './Icon'
 import styles from './DatePicker.module.css'
 
@@ -37,18 +37,6 @@ const WEEKDAYS = [
 const monthStart = (key: DateKey) => {
   const { year, month } = parseDateKey(key)
   return toDateKey(year, month, 1)
-}
-
-/** Monday-first grid of weeks covering the month, padded with nulls. */
-export function monthGrid(first: DateKey): (DateKey | null)[][] {
-  const { year, month } = parseDateKey(first)
-  const lead = (weekday(first) + 6) % 7
-  const cells: (DateKey | null)[] = Array.from({ length: lead }, () => null)
-  for (let d = 1; d <= daysInMonth(year, month); d++) cells.push(toDateKey(year, month, d))
-  while (cells.length % 7) cells.push(null)
-  const weeks = []
-  for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7))
-  return weeks
 }
 
 const clamp = (d: DateKey, min: DateKey, max: DateKey) => (d < min ? min : d > max ? max : d)

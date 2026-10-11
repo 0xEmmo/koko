@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router'
 import { bookingStart, effectiveStatus, getBooking, listMyBookings } from '../../api/client'
 import type { Booking } from '../../api/types'
@@ -53,7 +53,7 @@ function ListRoute() {
     document.title = 'My bookings · Kòkó'
   }, [])
 
-  const now = new Date()
+  const [now] = useState(() => new Date())
   const upcoming = res.data?.filter((b) => effectiveStatus(b, now) === 'confirmed') ?? []
   const past = (res.data?.filter((b) => effectiveStatus(b, now) !== 'confirmed') ?? []).reverse()
   const list = tab === 'upcoming' ? upcoming : past
@@ -94,7 +94,7 @@ function ListRoute() {
         {list.length > 0 && (
           <ul className={styles.list}>
             {list.map((b) => (
-              <BookingRow key={b.id} booking={b} />
+              <BookingRow key={b.id} booking={b} now={now} />
             ))}
           </ul>
         )}
@@ -127,12 +127,12 @@ function TabButton({ id, current, onSelect, count, label }: { id: Tab; current: 
   )
 }
 
-function BookingRow({ booking }: { booking: Booking }) {
+function BookingRow({ booking, now }: { booking: Booking; now: Date }) {
   const creative = findCreative(booking.creativeId)!
   const service = findService(creative, booking.serviceId)!
-  const status = statusLabel[effectiveStatus(booking)]!
+  const status = statusLabel[effectiveStatus(booking, now)]!
   const today = lagosNow().date
-  const soon = effectiveStatus(booking) === 'confirmed' && bookingStart(booking).getTime() - Date.now() < 36 * 3_600_000
+  const soon = effectiveStatus(booking, now) === 'confirmed' && bookingStart(booking).getTime() - now.getTime() < 36 * 3_600_000
 
   return (
     <li className={styles.row}>
