@@ -7,7 +7,7 @@ import { Icon } from '../../components/Icon'
 import { Photo } from '../../components/Photo'
 import { ErrorState, Skeleton } from '../../components/States'
 import { useToast } from '../../components/toast'
-import { creatives, findCreative, findService } from '../../data/creatives'
+import { creatives, findCreative, findService, firstNameOf } from '../../data/creatives'
 import { useResource } from '../../hooks/useResource'
 import { formatNaira, formatNairaShort } from '../../lib/money'
 import { greeting, weekStats } from '../../lib/studioStats'
@@ -49,7 +49,7 @@ export default function StudioPage() {
   )
   const stats = weekStats({ bookings, hours: creative.hours, from: today, days: 7, blockedDays: blocked })
   const dayBookings = bookings.filter((b) => b.date === day && b.status !== 'cancelled')
-  const firstName = creative.name.split(' ')[0]!
+  const firstName = firstNameOf(creative)
 
   const switchTo = (id: string) => {
     localStorage.setItem(AS_KEY, id)

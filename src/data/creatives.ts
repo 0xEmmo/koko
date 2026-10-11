@@ -369,6 +369,12 @@ export const crafts = [
 
 export const craftLabel = (craft: Creative['craft']) => crafts.find((c) => c.id === craft)!.single
 
+/** What clients actually call them: the nickname if there is one. */
+export function firstNameOf(creative: Pick<Creative, 'name'>) {
+  const nick = /“(.+?)”/.exec(creative.name)
+  return nick ? nick[1]! : creative.name.split(' ')[0]!
+}
+
 export function findCreative(idOrSlug: string) {
   return creatives.find((c) => c.id === idOrSlug || c.slug === idOrSlug)
 }

@@ -90,7 +90,7 @@ export function PaymentStep({ amount, payee, defaultName, onPay, onBack, onHoldE
         <label className={styles.method}>
           <input type="radio" name="method" checked={method === 'transfer'} onChange={() => setMethod('transfer')} />
           <Icon name="bank" size={20} />
-          <span>Bank transfer</span>
+          <span>Transfer</span>
         </label>
       </fieldset>
 

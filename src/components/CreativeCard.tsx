@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import type { DirectoryEntry } from '../api/client'
-import { craftLabel } from '../data/creatives'
+import { craftLabel, firstNameOf } from '../data/creatives'
 import { useSaved } from '../hooks/useSaved'
 import { formatNaira } from '../lib/money'
 import { formatClock, lagosNow, relativeDay } from '../lib/time'
@@ -20,7 +20,7 @@ export function CreativeCard({ entry, priority }: Props) {
   const toast = useToast()
   const saved = isSaved(creative.id)
   const cover = creative.gallery[0]!
-  const firstName = creative.name.split(' ')[0]
+  const firstName = firstNameOf(creative)
 
   return (
     <article className={styles.card}>

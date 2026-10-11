@@ -8,7 +8,7 @@ import { Photo } from '../../components/Photo'
 import { RouteFallback } from '../../components/RouteFallback'
 import { ErrorState } from '../../components/States'
 import { useToast } from '../../components/toast'
-import { craftLabel } from '../../data/creatives'
+import { craftLabel, firstNameOf } from '../../data/creatives'
 import type { Creative, Service } from '../../data/types'
 import { useResource } from '../../hooks/useResource'
 import { useSaved } from '../../hooks/useSaved'
@@ -123,7 +123,7 @@ function Profile({ creative }: { creative: Creative }) {
           <h2 id="work-title" className="sr-only">
             Work
           </h2>
-          <Gallery items={creative.gallery} onOpen={openPhoto} ownerName={creative.name.split(' ')[0]!} />
+          <Gallery items={creative.gallery} onOpen={openPhoto} ownerName={firstNameOf(creative)} />
         </section>
       </div>
 
@@ -182,7 +182,7 @@ function Profile({ creative }: { creative: Creative }) {
             <div>
               <dt>Deposit</dt>
               <dd>
-                {creative.depositPercent}% of the price, paid when you book. The rest is paid to {creative.name.split(' ')[0]} on the
+                {creative.depositPercent}% of the price, paid when you book. The rest is paid to {firstNameOf(creative)} on the
                 day.
               </dd>
             </div>

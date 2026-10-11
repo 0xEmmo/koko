@@ -8,7 +8,7 @@ import { RouteFallback } from '../../components/RouteFallback'
 import { ErrorState } from '../../components/States'
 import { TimePicker, type TimeValue } from '../../components/TimePicker'
 import { useToast } from '../../components/toast'
-import { findService } from '../../data/creatives'
+import { findService, firstNameOf } from '../../data/creatives'
 import type { Creative } from '../../data/types'
 import { useResource } from '../../hooks/useResource'
 import { formatNaira } from '../../lib/money'
@@ -75,7 +75,7 @@ function Flow({ creative }: { creative: Creative }) {
   const deposit = service ? depositFor(creative, service) : 0
   const secondsLeft = useCountdown(draft.hold?.expiresAt ?? null)
   const holdExpired = draft.hold !== null && secondsLeft === 0
-  const firstName = creative.name.split(' ')[0]!.replace(/“.*/, '').trim()
+  const firstName = firstNameOf(creative)
 
   useEffect(() => saveDraft(creative.slug, draft), [creative.slug, draft])
 

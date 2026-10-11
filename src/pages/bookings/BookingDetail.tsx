@@ -7,7 +7,7 @@ import { Icon } from '../../components/Icon'
 import { Photo } from '../../components/Photo'
 import { TimePicker, type TimeValue } from '../../components/TimePicker'
 import { useToast } from '../../components/toast'
-import { findCreative, findService } from '../../data/creatives'
+import { findCreative, findService, firstNameOf } from '../../data/creatives'
 import { bookingToIcs, downloadIcs } from '../../lib/ics'
 import { formatNaira } from '../../lib/money'
 import { formatNigerianPhone } from '../../lib/phone'
@@ -38,7 +38,7 @@ export function BookingDetail({ booking, isNew, onChanged }: Props) {
     freeCancelHours: creative.freeCancelHours,
     timesRescheduled: booking.rescheduledCount,
   })
-  const firstName = creative.name.split(' ')[0]
+  const firstName = firstNameOf(creative)
 
   useEffect(() => {
     document.title = `${service.name} with ${creative.name} · Kòkó`
@@ -257,7 +257,7 @@ function CancelDialog({ open, booking, onClose, onDone }: { open: boolean; booki
               You’ll get your <strong className="num">{formatNaira(booking.deposit)}</strong> deposit back in full, usually within 3–5 working days.
             </p>
           )}
-          <p className={styles.muted}>The slot goes straight back on {creative.name.split(' ')[0]}’s calendar for someone else.</p>
+          <p className={styles.muted}>The slot goes straight back on {firstNameOf(creative)}’s calendar for someone else.</p>
           {error && (
             <p className="field-error" role="alert">
               {error}
