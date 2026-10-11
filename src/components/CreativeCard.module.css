@@ -1,0 +1,153 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  transition:
+    transform 220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out);
+}
+
+.card:has(.link:hover) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-pop);
+}
+
+.card:has(.link:focus-visible) {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.media {
+  position: relative;
+}
+
+.avatar {
+  position: absolute;
+  left: 0.9rem;
+  bottom: -22px;
+  z-index: 2;
+  width: 56px;
+  border: 3px solid var(--paper-raised);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.save {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(251 248 242 / 0.92);
+  color: var(--ink);
+  transition: transform 160ms var(--ease-out);
+}
+
+.save:hover {
+  transform: scale(1.06);
+}
+
+.save[aria-pressed='true'] {
+  color: var(--accent);
+}
+
+.body {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.75rem 1rem 1rem;
+}
+
+.meta {
+  font-size: var(--step--1);
+  color: var(--ink-3);
+  font-weight: 500;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  line-height: 1.05;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.headline {
+  color: var(--ink-2);
+  font-size: var(--step--1);
+  min-height: 2.6em;
+}
+
+.facts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.4rem 0 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.facts dd {
+  margin: 0;
+}
+
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--ink);
+}
+
+.rating svg {
+  color: var(--accent);
+}
+
+.muted {
+  color: var(--ink-3);
+}
+
+.next {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.15rem;
+  font-size: var(--step--1);
+  color: var(--ok);
+}
+
+.next[data-none='true'] {
+  color: var(--ink-3);
+}
+
+.skeletonMedia {
+  aspect-ratio: 4 / 5;
+  background: var(--paper-sunk);
+}
+
+.skeletonLine {
+  display: block;
+  height: 14px;
+  border-radius: 4px;
+  background: var(--paper-sunk);
+}
