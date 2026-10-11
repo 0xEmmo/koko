@@ -49,7 +49,8 @@ export function TimePicker({ creativeId, service, value, onChange, ignoreBooking
   useEffect(() => {
     if (!avail.data || value.date === null || value.start === null) return
     const day = avail.data.days.find((d) => d.date === value.date)
-    if (day && !day.slots.includes(value.start)) {
+    // a day that filled up entirely may drop out of the response altogether
+    if (!day?.slots.includes(value.start)) {
       lostRef.current?.({ date: value.date, start: value.start })
       onChange({ date: value.date, start: null })
     }

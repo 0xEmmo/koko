@@ -96,7 +96,8 @@ function Flow({ creative }: { creative: Creative }) {
   const goTo = (step: Step) => patch({ step })
 
   const onTimeChange = useCallback((v: TimeValue) => {
-    setTimeError(null)
+    // only a fresh pick clears the warning; the picker itself resets start when a slot is lost
+    if (v.start !== null) setTimeError(null)
     setDraft((d) => ({ ...d, date: v.date, start: v.start }))
   }, [])
 
