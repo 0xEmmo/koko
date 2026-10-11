@@ -1,0 +1,141 @@
+.picker {
+  width: 100%;
+  max-width: 26rem;
+}
+
+.picker[aria-busy='true'] {
+  opacity: 0.6;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.month {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+}
+
+.arrows {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.arrows button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--paper-raised);
+}
+
+.arrows button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.grid {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 3px;
+  table-layout: fixed;
+}
+
+.grid th {
+  padding-bottom: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.grid td {
+  padding: 0;
+}
+
+.day {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1;
+  min-height: 44px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-m);
+  background: transparent;
+  color: var(--ink-3);
+  font-weight: 500;
+}
+
+.day[data-available='true'] {
+  color: var(--ink);
+  background: var(--paper-raised);
+  border-color: var(--line);
+  font-weight: 650;
+}
+
+.day[data-available='true']:hover {
+  border-color: var(--ink);
+}
+
+.day[aria-disabled='true'] {
+  cursor: default;
+  text-decoration: line-through;
+  text-decoration-color: color-mix(in srgb, var(--ink-3) 50%, transparent);
+}
+
+.day[data-today='true']::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px dashed var(--ink-3);
+  border-radius: 6px;
+}
+
+[aria-selected='true'] > .day {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper-raised);
+}
+
+.dot {
+  position: absolute;
+  bottom: 6px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ok);
+}
+
+.day[data-busy='true'] .dot,
+.dotBusy {
+  background: #c98a12;
+}
+
+[aria-selected='true'] > .day .dot {
+  background: var(--paper-raised);
+}
+
+.legend {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+
+.legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend .dot {
+  position: static;
+}
