@@ -1,0 +1,22 @@
+.frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.frame picture,
+.frame img {
+  width: 100%;
+  height: 100%;
+}
+
+.frame img {
+  opacity: 0;
+  transition: opacity 360ms var(--ease-out);
+}
+
+.frame[data-loaded='true'] img {
+  opacity: 1;
+}
