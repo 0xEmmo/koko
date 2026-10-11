@@ -162,7 +162,7 @@ function Profile({ creative }: { creative: Creative }) {
           <ul className={styles.reviews}>
             {creative.reviews.map((r) => (
               <li key={r.id} className={styles.review}>
-                <p className={styles.stars} aria-label={`${r.rating} out of 5`}>
+                <p className={styles.stars} role="img" aria-label={`${r.rating} out of 5`}>
                   {Array.from({ length: 5 }, (_, i) => (
                     <Icon key={i} name="star" size={14} filled={i < r.rating} />
                   ))}
