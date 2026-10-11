@@ -25,6 +25,8 @@ function seedCreativeDay(creative: Creative, date: DateKey, today: DateKey, take
   const isWeekend = weekday(date) === 6 || weekday(date) === 0
   const chance = BUSYNESS[creative.craft] * (isWeekend ? 1.5 : 1)
   const out: Booking[] = []
+  // Even busy people have the odd empty weekday; it also gives the studio demo a day to block off.
+  if (!isWeekend && rand() < 0.2) return out
 
   for (const [open, close] of spans) {
     for (let t = open; t < close; t += 30) {
