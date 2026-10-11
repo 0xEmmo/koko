@@ -1,0 +1,51 @@
+:root {
+  /* paper and ink */
+  --paper: #f4eee4;
+  --paper-raised: #fbf8f2;
+  --paper-sunk: #eae2d5;
+  --ink: #1c1a17;
+  --ink-2: #4a453e;
+  --ink-3: #6b645a;
+  --line: #d9cfbf;
+  --line-strong: #b9ad99;
+
+  /* kola-nut red, used sparingly */
+  --accent: #a03e22;
+  --accent-hover: #873219;
+  --accent-ink: #fff8f0;
+  --accent-soft: #f2dfd2;
+
+  --ok: #2e6a4e;
+  --ok-soft: #dcebe1;
+  --warn: #8a5d00;
+  --warn-soft: #f6e7c4;
+  --danger: #a12a2a;
+  --danger-soft: #f6dcd8;
+
+  --night: #1f1d1a;
+
+  --font-display: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+  --font-ui: 'Schibsted Grotesk Variable', 'Helvetica Neue', Arial, sans-serif;
+
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.0625rem;
+  --step-2: 1.375rem;
+  --step-3: clamp(1.75rem, 1.4rem + 1.4vw, 2.375rem);
+  --step-4: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
+  --step-5: clamp(2.75rem, 1.8rem + 4.4vw, 5.25rem);
+
+  --radius-s: 4px;
+  --radius-m: 8px;
+  --radius-l: 14px;
+
+  --shadow-pop: 0 1px 0 rgb(28 26 23 / 0.04), 0 12px 32px -12px rgb(28 26 23 / 0.28);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --page-max: 1240px;
+  --gutter: clamp(1rem, 0.6rem + 1.8vw, 2rem);
+  --header-h: 64px;
+  --tabbar-h: 62px;
+
+  color-scheme: light;
+}
