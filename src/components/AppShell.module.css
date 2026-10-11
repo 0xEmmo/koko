@@ -217,3 +217,11 @@
   line-height: 18px;
   text-align: center;
 }
+
+.install {
+  min-height: 36px;
+  margin-left: auto;
+  margin-right: 0.75rem;
+  padding-block: 0.2rem;
+  font-size: var(--step--1);
+}

@@ -1,10 +1,12 @@
 import { Suspense } from 'react'
 import { Link, NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router'
+import { useInstallPrompt } from '../hooks/useInstallPrompt'
 import { useOnline } from '../hooks/useOnline'
 import { useSaved } from '../hooks/useSaved'
 import { DemoControls } from './DemoControls'
 import { Icon, type IconName } from './Icon'
 import { RouteFallback } from './RouteFallback'
+import { UpdatePrompt } from './UpdatePrompt'
 import styles from './AppShell.module.css'
 
 const tabs: { to: string; label: string; icon: IconName; end?: boolean }[] = [
@@ -26,6 +28,7 @@ export function AppShell() {
   const online = useOnline()
   const { saved } = useSaved()
   const { pathname } = useLocation()
+  const install = useInstallPrompt()
   const inFlow = /\/book$/.test(pathname)
 
   return (
@@ -36,6 +39,11 @@ export function AppShell() {
       <header className={styles.header}>
         <div className={`page ${styles.headerInner}`}>
           <Wordmark />
+          {install && (
+            <button type="button" className={`btn btn-ghost ${styles.install}`} onClick={install}>
+              Install app
+            </button>
+          )}
           <nav aria-label="Main" className={styles.topNav}>
             {tabs.map((t) => (
               <NavLink key={t.to} to={t.to} end={t.end} className={styles.topLink}>
@@ -88,6 +96,7 @@ export function AppShell() {
         ))}
       </nav>
       <ScrollRestoration />
+      <UpdatePrompt />
     </div>
   )
 }
