@@ -1,0 +1,60 @@
+.box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--danger);
+  border-radius: var(--radius-m);
+  background: var(--paper-raised);
+}
+
+.box > div {
+  flex: 1 1 14rem;
+}
+
+.box svg {
+  color: var(--danger);
+  flex: none;
+}
+
+.box[data-compact='true'] {
+  padding: 0.85rem 1rem;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.text {
+  color: var(--ink-2);
+}
+
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: 0.6rem;
+  padding: 3rem 1rem;
+  text-align: center;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-l);
+}
+
+.emptyTitle {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+}
+
+.skeleton {
+  display: block;
+  background: linear-gradient(90deg, var(--paper-sunk) 0%, #f1ebe0 50%, var(--paper-sunk) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
