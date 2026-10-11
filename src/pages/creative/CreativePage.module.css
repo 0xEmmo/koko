@@ -1,0 +1,313 @@
+.profile {
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 900px) {
+  .profile {
+    padding-bottom: 0;
+  }
+}
+
+.layout {
+  display: grid;
+  gap: 1.75rem;
+  padding-block: 1.25rem 2rem;
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(300px, 380px) 1fr;
+    gap: 3rem;
+    align-items: start;
+    padding-block: 2rem 3rem;
+  }
+
+  .intro {
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+  }
+}
+
+.intro {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  width: fit-content;
+  color: var(--ink-3);
+  font-size: var(--step--1);
+  font-weight: 500;
+  text-decoration: none;
+  padding-block: 0.4rem;
+}
+
+.back:hover {
+  color: var(--ink);
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  flex: none;
+  width: 84px;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: var(--step-4);
+  line-height: 0.98;
+}
+
+.headline {
+  font-size: var(--step-1);
+  color: var(--ink-2);
+}
+
+.facts {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.85rem 0;
+  list-style: none;
+  border-block: 1px solid var(--line);
+  font-size: var(--step--1);
+}
+
+.facts li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.facts svg {
+  color: var(--ink-3);
+}
+
+.bio {
+  color: var(--ink-2);
+}
+
+.small {
+  font-size: var(--step--1);
+  color: var(--ink-3);
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.actions .btn-accent {
+  flex: 1;
+}
+
+@media (min-width: 900px) {
+  .actions .btn-accent {
+    flex: none;
+  }
+}
+
+.jump {
+  display: flex;
+  gap: 1.1rem;
+  margin-top: 0.4rem;
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.jump a {
+  text-decoration: none;
+  color: var(--ink-2);
+  padding-block: 0.4rem;
+  border-bottom: 1px solid transparent;
+}
+
+.jump a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.work {
+  min-width: 0;
+}
+
+.lower {
+  display: grid;
+  gap: 3.5rem;
+  padding-block: 1rem 2rem;
+}
+
+@media (min-width: 900px) {
+  .lower {
+    grid-template-columns: 1.3fr 1fr;
+    column-gap: 4rem;
+  }
+
+  .lower > section:first-child {
+    grid-row: span 2;
+  }
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  padding-bottom: 0.8rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--ink);
+}
+
+.sectionNum {
+  font-size: var(--step--1);
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.sectionTitle {
+  font-size: var(--step-3);
+}
+
+.services {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.serviceName {
+  font-size: var(--step-1);
+  font-weight: 650;
+  font-family: var(--font-ui);
+}
+
+.serviceText {
+  margin-top: 0.25rem;
+  color: var(--ink-2);
+  font-size: var(--step--1);
+  max-width: 34rem;
+}
+
+.serviceMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin-top: 0.55rem;
+  font-size: var(--step--1);
+  color: var(--ink-3);
+}
+
+.serviceMeta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.servicePrice {
+  display: grid;
+  justify-items: end;
+  align-content: start;
+  gap: 0.15rem;
+  text-align: right;
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.deposit {
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  margin-bottom: 0.5rem;
+}
+
+.reviews {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review {
+  display: grid;
+  gap: 0.5rem;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  color: var(--accent);
+}
+
+.quote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.policies {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 0;
+}
+
+.policies div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.policies dt {
+  font-weight: 650;
+}
+
+.policies dd {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+.stickyBar {
+  position: fixed;
+  z-index: 35;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem var(--gutter);
+  background: var(--paper-raised);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -8px 24px -16px rgb(28 26 23 / 0.35);
+}
+
+.stickyBar strong {
+  font-size: 1.15rem;
+}
+
+@media (min-width: 900px) {
+  .stickyBar {
+    display: none;
+  }
+}
