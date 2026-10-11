@@ -1,0 +1,40 @@
+.picker {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 760px) {
+  .picker {
+    grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.dayTitle {
+  margin-bottom: 0.9rem;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+}
+
+.times {
+  min-width: 0;
+}
+
+.skeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5.4rem, 1fr));
+  gap: 0.45rem;
+}
+
+.none {
+  padding: 1rem;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-m);
+  color: var(--ink-2);
+}
+
+.until {
+  margin-top: 1rem;
+  color: var(--ink-3);
+  font-size: var(--step--1);
+}
